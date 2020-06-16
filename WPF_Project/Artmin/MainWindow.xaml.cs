@@ -30,15 +30,16 @@ namespace Artmin
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            icItemcontrolEvents.ItemsSource = DatabaseOperations.OphalenEvents();
+            List<Event> events = DatabaseOperations.OphalenEvents();
+            icItemcontrolEvents.ItemsSource = events;
             EventBewerken eventBewerken = new EventBewerken();
             eventBewerken.Show();
-            NotitieBewerken notitieBewerken = new NotitieBewerken();
-            notitieBewerken.Show();
-            this.Close();
-            NotitieOverzicht notitieOverzicht = new NotitieOverzicht();
-            notitieOverzicht.Show();
-            this.Close();
+            //EventDetail eventDetail = new EventDetail();
+            //eventBewerken.Show();
+            //NotitieBewerken notitieBewerken = new NotitieBewerken();
+            //notitieBewerken.Show();
+            //NotitieOverzicht notitieOverzicht = new NotitieOverzicht();
+            //notitieOverzicht.Show();
         }
     }
 }
