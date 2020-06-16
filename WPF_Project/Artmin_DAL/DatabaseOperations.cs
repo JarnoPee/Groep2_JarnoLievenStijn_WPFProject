@@ -16,10 +16,7 @@ namespace Artmin_DAL
             using (ArtminEntities artminEntities = new ArtminEntities())
             {
                 return artminEntities.Event
-                    .Include(x => x.Eventtype.Naam)
-                    .Include(x => x.Datum)
-                    .Include(x => x.Startuur)
-                    .Include(x => x.Einduur)
+                    .Include(x => x.Eventtype)
                     .ToList();           
             }
         }

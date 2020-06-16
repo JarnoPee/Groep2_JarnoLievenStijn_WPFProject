@@ -16,7 +16,7 @@
         Title="EventBewerken" Height="491" Width="246">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -30,11 +30,21 @@
                 </TextDecoration>
             </TextBlock.TextDecorations>
         </TextBlock>
-        <Button x:Name="btnTerug" Grid.Row="1" Grid.ColumnSpan="2" Background="Gray" Width="238" HorizontalContentAlignment="Stretch">
-            <TextBlock Text="&lt; Events" TextAlignment="left"/>
+        <Button x:Name="btnEventsOverzicht" Grid.Row="1" Grid.ColumnSpan="2" Background="Gray" Width="238" HorizontalContentAlignment="Stretch">
+            <TextBlock Text="&lt; Events overzicht" TextAlignment="left"/>
         </Button>
-        <StackPanel>
-            
+        <StackPanel Orientation="Vertical" Grid.Row="2">
+            <Label Content="Event Name:" Margin="25,25,0,0"/>
+            <TextBox x:Name="txtEventName" Margin="25,0,25,0" Background="LightGray"/>
+            <Label Content="Type:" Margin="25,0,0,0"/>
+            <TextBox x:Name="txtType" Margin="25,0,25,0" Background="LightGray"/>
+            <Label Content="Date:" Margin="25,0,0,0"/>
+            <TextBox x:Name="txtDate" Margin="25,0,25,0" Background="LightGray"/>
+            <Label Content="Start time:" Margin="25,0,0,0"/>
+            <TextBox x:Name="txtStartTime" Margin="25,0,25,0" Background="LightGray"/>
+            <Label Content="End time:" Margin="25,0,0,0"/>
+            <TextBox x:Name="txtEndTime" Margin="25,0,25,0" Background="LightGray"/>
+            <Button x:Name="btnSave" Content="Save" Margin="25,25" Foreground="White" Background="CornflowerBlue" BorderBrush="#3171b7"/>
         </StackPanel>
 
         

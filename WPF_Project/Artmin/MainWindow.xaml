@@ -36,49 +36,49 @@
             </TextBlock.TextDecorations>
         </TextBlock>
         <Label x:Name="lblGrijzeAchtergrond" Grid.Row="1" Grid.ColumnSpan="2" Background="Gray"/>
-        <ItemsControl x:Name="icItemcontrolEvents" Grid.Row="2">
-            <ItemsControl.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel/>
-                </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <Border BorderBrush="Black" BorderThickness="1" Margin="0" Padding="10">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Label x:Name="lblEventnaam" Content="{Binding Eventnaam}" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" FontSize="20"></Label>
-                            <Image Source="/pictogrammen/fuif.png" x:Name="ImgEvent" Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
-                            <Label x:Name="lblType" Content="{Binding Eventtype.Naam}"  Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" FontSize="16"/>
-                            <Line Stroke="Black" StrokeThickness="2" Grid.Column="1" Grid.Row="2"/>
-                            <Label x:Name="lbldag" HorizontalAlignment="Left" FontSize="12" Grid.Column="1" Grid.Row="3"/>
-                            <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="4">
-                                <Label x:Name="lblDatum" HorizontalAlignment="Left" FontSize="16" Content="{Binding Datum}"/>
-                                <Label x:Name="lblBeginUur" HorizontalAlignment="Left" FontSize="16" Content="{Binding Startuur}"/>
-                                <Label x:Name="lblStreep" HorizontalAlignment="Left" FontSize="16" Content="-"/>
-                                <Label x:Name="lblEindUur" HorizontalAlignment="Left" FontSize="16" Content="{Binding Einduur}"/>
-                            </StackPanel>
-                            <Button x:Name="btnSelect" Content="SELECT" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5" Grid.Column="1" Grid.Row="5"/>
-                            <Image Source="/pictogrammen/BlackSetup.png" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Grid.Row="5" />
-                            <Image Source="/pictogrammen/trash.png" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Grid.Row="5" />
-                        </Grid>
-                    </Border>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-        
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <ItemsControl x:Name="icItemcontrolEvents" Grid.Row="2" Grid.ColumnSpan="2">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Black" BorderThickness="1" Margin="0" Padding="10">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Label x:Name="lblEventnaam" Content="{Binding Eventnaam}" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" FontSize="20"></Label>
+                                <Image Source="/pictogrammen/fuif.png" x:Name="ImgEvent" Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+                                <Label x:Name="lblType" Content="{Binding Eventtype.Naam}"  Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" FontSize="16"/>
+                                <Label x:Name="lbldag" HorizontalAlignment="Left" FontSize="12" Grid.Column="1" Grid.Row="3"/>
+                                <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="4">
+                                    <Label x:Name="lblDatum" HorizontalAlignment="Left" FontSize="16" Content="{Binding Datum}"/>
+                                    <Label x:Name="lblBeginUur" HorizontalAlignment="Left" FontSize="16" Content="{Binding Startuur}"/>
+                                    <Label x:Name="lblStreep" HorizontalAlignment="Left" FontSize="16" Content="-"/>
+                                    <Label x:Name="lblEindUur" HorizontalAlignment="Left" FontSize="16" Content="{Binding Einduur}"/>
+                                </StackPanel>
+                                <Button x:Name="btnSelect" Content="SELECT" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5" Grid.Column="1" Grid.Row="5"/>
+                                <Image Source="/pictogrammen/BlackSetup.png" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" Grid.Row="5" />
+                                <Image Source="/pictogrammen/trash.png" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Grid.Row="5" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </Window>
