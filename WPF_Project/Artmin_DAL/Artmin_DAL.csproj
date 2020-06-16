@@ -72,6 +72,7 @@
     <Compile Include="Event.cs">
       <DependentUpon>ArtminModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="EventGegevens.cs" />
     <Compile Include="Eventtype.cs">
       <DependentUpon>ArtminModel.tt</DependentUpon>
     </Compile>

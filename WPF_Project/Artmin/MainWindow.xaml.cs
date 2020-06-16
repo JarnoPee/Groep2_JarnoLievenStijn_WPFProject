@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Artmin_DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Data.Entity;
+using Artmin_Models;
 
 namespace Artmin
 {
@@ -27,10 +30,12 @@ namespace Artmin
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            icItemcontrolEvents.ItemsSource = DatabaseOperations.OphalenEvents();
+            EventBewerken eventBewerken = new EventBewerken();
+            eventBewerken.Show();
             NotitieBewerken notitieBewerken = new NotitieBewerken();
             notitieBewerken.Show();
             this.Close();
-
             NotitieOverzicht notitieOverzicht = new NotitieOverzicht();
             notitieOverzicht.Show();
             this.Close();

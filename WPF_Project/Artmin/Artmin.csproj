@@ -71,6 +71,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="EventBewerken.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EventDetail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -78,6 +86,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="EventBewerken.xaml.cs">
+      <DependentUpon>EventBewerken.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EventDetail.xaml.cs">
+      <DependentUpon>EventDetail.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -124,6 +138,33 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pictogrammen\BlackSetup.png" />
+    <Resource Include="pictogrammen\calendar.png" />
+    <Resource Include="pictogrammen\check.png" />
+    <Resource Include="pictogrammen\client.png" />
+    <Resource Include="pictogrammen\clock.png" />
+    <Resource Include="pictogrammen\confirmd.png" />
+    <Resource Include="pictogrammen\crowd.png" />
+    <Resource Include="pictogrammen\dj2.png" />
+    <Resource Include="pictogrammen\fuif.png" />
+    <Resource Include="pictogrammen\headphone.png" />
+    <Resource Include="pictogrammen\home.png" />
+    <Resource Include="pictogrammen\huwelijk.png" />
+    <Resource Include="pictogrammen\invoice.png" />
+    <Resource Include="pictogrammen\leftarrow.png" />
+    <Resource Include="pictogrammen\location.png" />
+    <Resource Include="pictogrammen\Logo.jpg" />
+    <Resource Include="pictogrammen\nocheck.png" />
+    <Resource Include="pictogrammen\notes.png" />
+    <Resource Include="pictogrammen\payments.png" />
+    <Resource Include="pictogrammen\setup.png" />
+    <Resource Include="pictogrammen\todo.png" />
+    <Resource Include="pictogrammen\trash.png" />
+    <Resource Include="pictogrammen\vat.png" />
+    <Resource Include="pictogrammen\whiteclock.png" />
+    <Resource Include="pictogrammen\WhiteSetup.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Artmin_DAL\Artmin_DAL.csproj">
