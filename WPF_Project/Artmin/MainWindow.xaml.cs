@@ -33,6 +33,12 @@ namespace Artmin
             icItemcontrolEvents.ItemsSource = DatabaseOperations.OphalenEvents();
             EventBewerken eventBewerken = new EventBewerken();
             eventBewerken.Show();
+            NotitieBewerken notitieBewerken = new NotitieBewerken();
+            notitieBewerken.Show();
+            this.Close();
+            NotitieOverzicht notitieOverzicht = new NotitieOverzicht();
+            notitieOverzicht.Show();
+            this.Close();
         }
     }
 }

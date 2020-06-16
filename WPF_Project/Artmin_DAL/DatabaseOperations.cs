@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Runtime.CompilerServices;
+using System.Net.NetworkInformation;
 
 namespace Artmin_DAL
 {
@@ -17,7 +18,16 @@ namespace Artmin_DAL
             {
                 return artminEntities.Event
                     .Include(x => x.Eventtype)
-                    .ToList();           
+                    .ToList();
+            }
+        }
+
+        public static List<Notitie> OphalenNotitiesViaEventId(int eventId)
+        {
+            using (ArtminEntities artminEntities = new ArtminEntities())
+            {
+                var query = artminEntities.Notitie;
+                return query.ToList();
             }
         }
     }
