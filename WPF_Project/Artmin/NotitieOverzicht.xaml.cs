@@ -10,30 +10,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Artmin_DAL;
 
 namespace Artmin
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for NotitieOverzicht.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class NotitieOverzicht : Window
     {
-        public MainWindow()
+        public NotitieOverzicht()
         {
             InitializeComponent();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            NotitieBewerken notitieBewerken = new NotitieBewerken();
-            notitieBewerken.Show();
-            this.Close();
-
-            NotitieOverzicht notitieOverzicht = new NotitieOverzicht();
-            notitieOverzicht.Show();
-            this.Close();
+            lblNaamEvenement.Content = $"Naam Evenement NOG INVULLEN";
+            List<Notitie> notities = DatabaseOperations.OphalenNotitiesViaEventId(1); // NOG AANPASSEN NAAR INGELADEN EVENT
+            datagridNotitieEvenement.ItemsSource = notities;
         }
     }
 }
