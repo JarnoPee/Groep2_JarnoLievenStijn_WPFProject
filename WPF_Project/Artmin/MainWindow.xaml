@@ -36,8 +36,8 @@
             </TextBlock.TextDecorations>
         </TextBlock>
         <Label x:Name="lblGrijzeAchtergrond" Grid.Row="1" Grid.ColumnSpan="2" Background="Gray"/>
-        <ScrollViewer VerticalScrollBarVisibility="Auto">
-            <ItemsControl x:Name="icItemcontrolEvents" Grid.Row="2" Grid.ColumnSpan="2">
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="2" Grid.ColumnSpan="3">
+            <ItemsControl x:Name="icItemcontrolEvents" >
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel/>

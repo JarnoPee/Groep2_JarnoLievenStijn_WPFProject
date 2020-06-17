@@ -35,10 +35,8 @@ namespace Artmin
             eventBewerken.Show();
             NotitieBewerken notitieBewerken = new NotitieBewerken();
             notitieBewerken.Show();
-            this.Close();
             NotitieOverzicht notitieOverzicht = new NotitieOverzicht();
             notitieOverzicht.Show();
-            this.Close();
         }
     }
 }

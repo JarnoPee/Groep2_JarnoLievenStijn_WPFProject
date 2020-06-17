@@ -76,6 +76,7 @@
     <Compile Include="Eventtype.cs">
       <DependentUpon>ArtminModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="FileOperations.cs" />
     <Compile Include="Klant.cs">
       <DependentUpon>ArtminModel.tt</DependentUpon>
     </Compile>
@@ -85,6 +86,8 @@
     <Compile Include="Notitie.cs">
       <DependentUpon>ArtminModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="NotitieGegevens.cs" />
+    <Compile Include="Partials\Notitie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ToDo.cs">
       <DependentUpon>ArtminModel.tt</DependentUpon>
@@ -117,6 +120,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Artmin_Models\Artmin_Models.csproj">
+      <Project>{6ad2bd7e-ceeb-421a-b59f-e249d3fbf0f2}</Project>
+      <Name>Artmin_Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
