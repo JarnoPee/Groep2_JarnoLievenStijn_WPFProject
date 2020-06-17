@@ -12,7 +12,7 @@ namespace Artmin_DAL
 {
     public static class DatabaseOperations
     {
-        public static List<Event> OphalenEvents()
+        public static List<Event> OphalenEvents()//Lieven
         {
             using (ArtminEntities artminEntities = new ArtminEntities())
             {
@@ -22,18 +22,22 @@ namespace Artmin_DAL
             }
         }
 
-        public static Event OphalenEventsViaId(int eventId)
+        public static Event OphalenEventViaId(int eventId)//Lieven
         {
             using (ArtminEntities artminEntities = new ArtminEntities())
             {
                 return artminEntities.Event
-                    .Include(x => x.Eventtype)
+                    .Include(x => x.ToDos)
+                    .Include(x => x.Locatie)
+                    .Include(x => x.Notities)
+                    .Include(x => x.Artiesten)
+                    .Include(x => x.Klant)
                     .Where(x => x.EventID == eventId)
                     .SingleOrDefault();
             }
         }
 
-        public static List<Eventtype> OphalenEventTypes()
+        public static List<Eventtype> OphalenEventTypes()//Lieven
         {
             using (ArtminEntities artminEntities = new ArtminEntities())
             {
@@ -42,17 +46,7 @@ namespace Artmin_DAL
             }
         }
 
-        //public static Eventtype OphalenEventTypeViaId(int eventTypeId)
-        //{
-        //    using (ArtminEntities artminEntities = new ArtminEntities())
-        //    {
-        //        return artminEntities.Eventtype
-        //            .Where(x => x.EventtypeID == eventTypeId)
-        //            .SingleOrDefault();
-        //    }
-        //}
-
-        public static int UpdateEvent(Event _event)
+        public static int UpdateEvent(Event _event)//Lieven
         {
             try
             {
@@ -69,13 +63,30 @@ namespace Artmin_DAL
             }
         }
 
-        public static int ToevoegenEvent(Event _event)
+        public static int ToevoegenEvent(Event _event)//Lieven
         {
             try
             {
                 using (ArtminEntities artminEntities = new ArtminEntities())
                 {
                     artminEntities.Event.Add(_event);
+                    return artminEntities.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.Foutloggen(ex);
+                return 0;
+            }
+        }
+
+        public static int VerwijderenEvent(Event _event)//Lieven
+        {
+            try
+            {
+                using (ArtminEntities artminEntities = new ArtminEntities())
+                {
+                    artminEntities.Entry(_event).State = EntityState.Deleted;
                     return artminEntities.SaveChanges();
                 }
             }

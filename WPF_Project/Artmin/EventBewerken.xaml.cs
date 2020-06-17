@@ -21,7 +21,7 @@ namespace Artmin
     /// <summary>
     /// Interaction logic for EventBewerken.xaml
     /// </summary>
-    public partial class EventBewerken : Window
+    public partial class EventBewerken : Window //Lieven
     {
         public EventBewerken()
         {
@@ -42,7 +42,7 @@ namespace Artmin
             }
             if (EventGegevens.EventId > 0)
             {
-                eventOphalen = DatabaseOperations.OphalenEventsViaId(EventGegevens.EventId);
+                eventOphalen = DatabaseOperations.OphalenEventViaId(EventGegevens.EventId);
 
                 if (eventOphalen != null)
                 {

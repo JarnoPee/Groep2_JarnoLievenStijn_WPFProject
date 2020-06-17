@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Artmin_DAL;
 
 namespace Artmin
 {
@@ -22,6 +23,18 @@ namespace Artmin
         public EventDetail()
         {
             InitializeComponent();
+        }
+
+        private void btnEventsOverzicht_Click(object sender, RoutedEventArgs e)
+        {
+            ResetEnAfsluiten();
+        }
+        public void ResetEnAfsluiten()
+        {
+            EventGegevens.EventId = 0;
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            this.Close();
         }
     }
 }
