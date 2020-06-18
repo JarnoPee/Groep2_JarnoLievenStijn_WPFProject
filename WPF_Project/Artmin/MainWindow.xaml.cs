@@ -133,5 +133,10 @@ namespace Artmin
                 }
             }
         }
+
+        private void Window_Unloaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -111,7 +111,8 @@ namespace Artmin_DAL
         {     //Gemaakt door: Jarno Peeters - R0670336
             using (ArtminEntities artminEntities = new ArtminEntities())
             {
-                var query = artminEntities.Notitie;
+                var query = artminEntities.Notitie
+                .Where(x => x.EventID == eventId); 
                 return query.ToList();
             }
         }
@@ -159,17 +160,8 @@ namespace Artmin_DAL
             }
             catch (Exception ex)
             {
-                FileOperations.FoutLoggen(ex);
+                FileOperations.Foutloggen(ex);
                 return 0;
-            }
-        }
-        public static Event OphalenEventViaId(int EventId)
-        {   //Stijn Beckers - r0795483
-            using (ArtminEntities artminEntities = new ArtminEntities())
-            {
-                return artminEntities.Event
-                    .Where(x => x.EventID == EventId)
-                    .SingleOrDefault();
             }
         }
         public static Notitie OphalenNotitieViaId(int notitieId)
