@@ -159,19 +159,11 @@ namespace Artmin_DAL
             }
             catch (Exception ex)
             {
-                FileOperations.FoutLoggen(ex);
+                FileOperations.Foutloggen(ex);
                 return 0;
             }
         }
-        public static Event OphalenEventViaId(int EventId)
-        {   //Stijn Beckers - r0795483
-            using (ArtminEntities artminEntities = new ArtminEntities())
-            {
-                return artminEntities.Event
-                    .Where(x => x.EventID == EventId)
-                    .SingleOrDefault();
-            }
-        }
+
         public static Notitie OphalenNotitieViaId(int notitieId)
         {   //Gemaakt door: Jarno Peeters - R0670336
             using (ArtminEntities artminEntities = new ArtminEntities())

@@ -39,6 +39,7 @@ namespace Artmin
         }
         private void btnTerugNaarVorigScherm_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show("Uw notitie is niet aangepast!")
             NotitieOverzicht notitieOverzicht = new NotitieOverzicht();
             notitieOverzicht.Show();
             this.Close();
