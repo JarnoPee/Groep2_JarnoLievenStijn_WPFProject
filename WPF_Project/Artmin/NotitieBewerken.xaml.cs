@@ -34,7 +34,6 @@ namespace Artmin
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            EventGegevens.EventId = 1;
             Event eventNaam = DatabaseOperations.OphalenEventViaId(EventGegevens.EventId);
             lblNaamEvenement.Content = $"{eventNaam.Eventnaam}";//Naam van event inladen
         }
