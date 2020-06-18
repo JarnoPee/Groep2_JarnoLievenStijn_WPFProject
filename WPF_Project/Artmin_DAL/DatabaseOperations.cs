@@ -107,19 +107,34 @@ namespace Artmin_DAL
         }
         public static int VerwijderenNotitie(Notitie notitie)
         {    //Gemaakt door: Jarno Peeters - R0670336
-
-            using (ArtminEntities artminEntities = new ArtminEntities())
+            try
             {
-                artminEntities.Entry(notitie).State = EntityState.Deleted;
-                return artminEntities.SaveChanges();
+                using (ArtminEntities artminEntities = new ArtminEntities())
+                {
+                    artminEntities.Entry(notitie).State = EntityState.Deleted;
+                    return artminEntities.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.Foutloggen(ex);
+                return 0;
             }
         }
         public static int AanpassenNotitie(Notitie notitie)
         {   //Gemaakt door: Jarno Peeters - R0670336
-            using (ArtminEntities artminEntities = new ArtminEntities())
+            try
             {
-                artminEntities.Entry(notitie).State = EntityState.Modified;
-                return artminEntities.SaveChanges();
+                using (ArtminEntities artminEntities = new ArtminEntities())
+                {
+                    artminEntities.Entry(notitie).State = EntityState.Modified;
+                    return artminEntities.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.Foutloggen(ex);
+                return 0;
             }
         }
         public static int ToevoegenNotitie(Notitie notitie)
