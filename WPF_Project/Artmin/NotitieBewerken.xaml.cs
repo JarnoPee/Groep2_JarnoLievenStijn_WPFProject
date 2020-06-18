@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Artmin_DAL;
 
 namespace Artmin
 {
@@ -18,10 +19,110 @@ namespace Artmin
     /// Interaction logic for NotitieBewerken.xaml
     /// </summary>
     public partial class NotitieBewerken : Window
-    {
+    {     //Scherm gemaakt door: Jarno Peeters - R0670336
+        Notitie notitie = new Notitie();
         public NotitieBewerken()
         {
             InitializeComponent();
+        }
+        public NotitieBewerken(int notitieId)
+        {
+            InitializeComponent();
+            notitie = DatabaseOperations.OphalenNotitieViaId(NotitieGegevens.NotitieId);
+            txtNotitieNaamAanpassen.Text = notitie.Titel;
+            txtNotitieOmschrijvingAanpassen.Text = notitie.Omschrijving;
+        }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Event eventNaam = DatabaseOperations.OphalenEventViaId(EventGegevens.EventId);
+            lblNaamEvenement.Content = $"{eventNaam.Eventnaam}";//Naam van event inladen
+        }
+        private void btnTerugNaarVorigScherm_Click(object sender, RoutedEventArgs e)
+        {
+            NotitieOverzicht notitieOverzicht = new NotitieOverzicht();
+            notitieOverzicht.Show();
+            this.Close();
+        }
+
+        private void btnOpslaan_Click(object sender, RoutedEventArgs e)
+        {
+            if (NotitieGegevens.NotitieId == 0)
+            { //Notitie toevoegen
+                string foutmelding = Valideer("Titel" + "Omschrijving");
+                if (string.IsNullOrWhiteSpace(foutmelding))
+                {
+                    notitie.Titel = txtNotitieNaamAanpassen.Text;
+                    notitie.Omschrijving = txtNotitieOmschrijvingAanpassen.Text;
+                    notitie.EventID = EventGegevens.EventId;
+                    if (notitie.IsGeldig())
+                    {
+                        int ok = DatabaseOperations.ToevoegenNotitie(notitie);
+                        if (ok <= 0)
+                        {
+                            MessageBox.Show("Notitie is NIET toegevoegd!");
+                        }
+                        else
+                        {
+                            NotitieOverzicht notitieOverzicht = new NotitieOverzicht();
+                            notitieOverzicht.Show();
+                            this.Close();
+                            MessageBox.Show("Uw notitie is toegevoegd!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(notitie.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(foutmelding);
+                }
+            }
+            else
+            { //Notitie aanpassen
+                string foutmelding = Valideer("Titel" + "Omschrijving");
+                if (string.IsNullOrWhiteSpace(foutmelding))
+                {
+                    notitie.Titel = txtNotitieNaamAanpassen.Text;
+                    notitie.Omschrijving = txtNotitieOmschrijvingAanpassen.Text;
+                    if (notitie.IsGeldig())
+                    {
+                        int ok = DatabaseOperations.AanpassenNotitie(notitie);
+                        if (ok > 0)
+                        {
+                            NotitieOverzicht notitieOverzicht = new NotitieOverzicht();
+                            notitieOverzicht.Show();
+                            this.Close();
+                            MessageBox.Show("Uw notitie is aangepast!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Notitie is niet aangepast!");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show(notitie.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show(foutmelding);
+                }
+            }
+        }
+        private string Valideer(string columnName)
+        {
+            if (columnName == "Titel" && string.IsNullOrWhiteSpace(txtNotitieNaamAanpassen.Text))
+            {
+                return "Titel moet ingevuld zijn!";
+            }
+            if (columnName == "Omschrijving" && string.IsNullOrWhiteSpace(txtNotitieOmschrijvingAanpassen.Text))
+            {
+                return "De omschrijving moet ingevuld zijn!";
+            }
+            return "";
         }
     }
 }

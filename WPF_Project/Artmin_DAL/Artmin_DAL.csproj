@@ -100,6 +100,8 @@
     <Compile Include="Notitie.cs">
       <DependentUpon>ArtminModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="NotitieGegevens.cs" />
+    <Compile Include="Partials\Notitie.cs" />
     <Compile Include="Partials\Event.cs" />
     <Compile Include="Partials\Eventtype.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
