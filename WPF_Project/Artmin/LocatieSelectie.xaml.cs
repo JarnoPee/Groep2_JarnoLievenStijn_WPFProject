@@ -34,17 +34,35 @@ namespace Artmin
             cmbLocatie.ItemsSource = locaties;
             Eventgegevens.EventId = 1;
             eventnaam = DatabaseOperations.OphalenEventViaId(Eventgegevens.EventId);
-            //controle
-            lblNaamEvenement.Content = $"{eventnaam.Eventnaam}";
-            btnNaarEventOverzicht.Content = "< " + eventnaam.Eventnaam;
-            Locatie locatie = DatabaseOperations.OphalenLocatieViaId(eventnaam.LocatieID.Value);
-            txtNaamLocatie.Text = locatie.Naam;
-            txtStraatNummer.Text = locatie.Straat + " " + locatie.Huisnr;
-            txtManager.Text = locatie.Manager;
-            txtEmail.Text = locatie.Email;
-            txtPostcodeGemeente.Text = locatie.Postcode + " " + locatie.Gemeente;
-            txtTelefoon.Text = locatie.Telefoon;
-            cmbLocatie.SelectedItem = locatie;
+            if (eventnaam != null)
+            {
+                lblNaamEvenement.Content = $"{eventnaam.Eventnaam}";
+                btnNaarEventOverzicht.Content = "< " + eventnaam.Eventnaam;             
+                if (eventnaam.Locatie != null)
+                {
+                    Locatie locatie = DatabaseOperations.OphalenLocatieViaId(eventnaam.LocatieID.Value);
+                    if (locatie != null)
+                    {
+                        txtNaamLocatie.Text = locatie.Naam;
+                        txtStraatNummer.Text = locatie.Straat + " " + locatie.Huisnr;
+                        txtManager.Text = locatie.Manager;
+                        txtEmail.Text = locatie.Email;
+                        txtPostcodeGemeente.Text = locatie.Postcode + " " + locatie.Gemeente;
+                        txtTelefoon.Text = locatie.Telefoon;
+                        cmbLocatie.SelectedItem = locatie;
+                    }                    
+                }
+                else
+                {
+                    return;
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Kon uw event niet vinden");
+            }
+            
         }
 
         private void BtnVerwijderen_Click(object sender, RoutedEventArgs e)
@@ -102,8 +120,8 @@ namespace Artmin
             
                 if (cmbLocatie.SelectedItem is Locatie selectedLocatie)
                 {
-                    eventnaam.LocatieID = locatie.LocatieID;
-                    eventnaam.Locatie = locatie;
+                    eventnaam.LocatieID = selectedLocatie.LocatieID;
+                    eventnaam.Locatie = selectedLocatie;
 
                     int ok = DatabaseOperations.UpdateEvent(eventnaam);
                     if (ok > 0)
