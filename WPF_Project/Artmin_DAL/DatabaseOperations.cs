@@ -28,12 +28,22 @@ namespace Artmin_DAL
             {
                 return artminEntities.Event
                     .Include(x => x.ToDos)
+                    .Include(x => x.Eventtype)
                     .Include(x => x.Locatie)
                     .Include(x => x.Notities)
                     .Include(x => x.Artiesten)
                     .Include(x => x.Klant)
                     .Where(x => x.EventID == eventId)
                     .SingleOrDefault();
+            }
+        }
+        public static List<ToDo> OphalenToDosViaEventId(int eventId)//Lieven
+        {
+            using (ArtminEntities artminEntities = new ArtminEntities())
+            {
+                return artminEntities.ToDo
+                    .Where(x => x.EventID == eventId)
+                    .ToList();
             }
         }
 
