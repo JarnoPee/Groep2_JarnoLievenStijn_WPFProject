@@ -31,7 +31,7 @@ namespace Artmin_DAL
 
         public override bool Equals(object obj)
         {
-            return base.Equals(obj);
+            return obj is Event _event && EventID == _event.EventID;
         }
 
         public override int GetHashCode()

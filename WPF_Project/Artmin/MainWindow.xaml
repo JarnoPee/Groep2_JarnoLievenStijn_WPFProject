@@ -13,7 +13,7 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        Title="MainWindow" Height="491" Width="246" Loaded="Window_Loaded">
+        Title="MainWindow" Height="491" Width="246" Loaded="Window_Loaded" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -25,7 +25,7 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Label x:Name="lblZwarteAchtergrond" Grid.Row="0" Grid.ColumnSpan="2" Background="black"/>
-        <Button x:Name="btnEventBewerken" Content="+" Padding="0" Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Height="40" Foreground="White" Background="black" FontSize="30"/>
+        <Button x:Name="btnEventToevoegen" Content="+" Padding="0" Grid.Column="0" Grid.Row="0"  HorizontalAlignment="Center" VerticalAlignment="Center" Width="40" Height="40" Foreground="White" Background="black" FontSize="30" Click="btnEventToevoegen_Click"/>
         <TextBlock x:Name="TxtBlEvents" Text="Events" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="20" FontWeight="Bold">
             <TextBlock.TextDecorations>
                 <TextDecoration Location="Underline">
@@ -36,13 +36,13 @@
             </TextBlock.TextDecorations>
         </TextBlock>
         <Label x:Name="lblGrijzeAchtergrond" Grid.Row="1" Grid.ColumnSpan="2" Background="Gray"/>
-        <ScrollViewer x:Name="mcScroll" VerticalScrollBarVisibility="Auto" Grid.Row="2" Grid.ColumnSpan="4">
-            <ItemsControl x:Name="icItemcontrolEvents">
-            <ItemsControl.ItemsPanel>
+        <ScrollViewer x:Name="mcScroll" VerticalScrollBarVisibility="auto" Grid.Row="2" Grid.ColumnSpan="4">
+            <ItemsControl x:Name="icItemscontrolEvents">
+                <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel/>
                     </ItemsPanelTemplate>
-            </ItemsControl.ItemsPanel>
+                </ItemsControl.ItemsPanel>
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Border BorderBrush="Black" BorderThickness="1" Margin="0" Padding="10">
@@ -55,37 +55,38 @@
                                     <RowDefinition/>
                                     <RowDefinition/>
                                 </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>                                
+                                <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="80"/>
                                     <ColumnDefinition Width="80"/>
                                     <ColumnDefinition Width="80"/>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock x:Name="lblEventnaam" Text="{Binding Eventnaam}" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" FontSize="18" TextWrapping="Wrap" Grid.ColumnSpan="2"></TextBlock>
-                                <Image Source="/pictogrammen/fuif.png" x:Name="ImgEvent" Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" Height="20" Width="20" VerticalAlignment="Top"/>
-                            <Label x:Name="lblType" Content="{Binding Eventtype.Naam}"  Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" FontSize="14"/>
-                            <TextBlock x:Name="lbldag" HorizontalAlignment="Left" FontSize="12" Grid.Column="0" Grid.Row="3" />
-                                <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2">
-                                    <Label x:Name="lblDatum" HorizontalAlignment="Left" FontSize="12" Content="{Binding Datum}"/>
-                                    <Label x:Name="lblBeginUur" HorizontalAlignment="Left" FontSize="12" Content="{Binding Startuur}"/>
-                                    <Label x:Name="lblStreep" HorizontalAlignment="Left" FontSize="12" Content="-"/>
-                                    <Label x:Name="lblEindUur" HorizontalAlignment="Left" FontSize="12" Content="{Binding Einduur}"/>
+                                <Image Source="{Binding Eventtype.Logo}" x:Name="ImgEvent" Grid.Column="3" Grid.Row="0" Grid.RowSpan="2" Height="30" Width="30" VerticalAlignment="Top">
+                                </Image>
+                                <TextBlock x:Name="lblType" Text="{Binding Eventtype.Naam}"  Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" FontSize="14"/>
+                                <TextBlock x:Name="lbldag" HorizontalAlignment="Left" FontSize="12" Grid.Column="0" Grid.Row="3" Text="{Binding Datum, Mode=OneTime, StringFormat={}{0:dddd}, ConverterCulture=nl-NL}" Margin="0,10,0,0"/>
+                                <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" Margin="0,2,0,0">
+                                    <TextBlock x:Name="lblDatum" HorizontalAlignment="Left" FontSize="12" Text="{Binding Datum, Mode=OneTime, StringFormat={}{0:dd/MM/yyyy}}" Margin="0,0,10,0"/>
+                                    <TextBlock x:Name="lblBeginUur" HorizontalAlignment="Left" FontSize="12" Text="{Binding Startuur}"/>
+                                    <TextBlock x:Name="lblStreep" HorizontalAlignment="Left" FontSize="12" Text="-"/>
+                                    <TextBlock x:Name="lblEindUur" HorizontalAlignment="Left" FontSize="12" Text="{Binding Einduur}"/>
                                 </StackPanel>
-                            <Button x:Name="btnSelect" Content="SELECT" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="5" Grid.Column="0" Grid.Row="5"/>
-                            <Button x:Name="btnInstellingen" Width="40" Height="40" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="5"
+                                <Button x:Name="btnSelect" Tag="{Binding EventID}" Content="SELECT" HorizontalAlignment="Left" VerticalAlignment="Bottom" Padding="5" Grid.Column="0" Grid.Row="5" Click="btnSelect_Click"/>
+                                <Button x:Name="btnInstellingen" Tag="{Binding EventID}" Width="40" Height="40" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Column="1" Grid.Row="5" Click="btnInstellingen_Click"
                                     Style="{StaticResource MaterialDesignIconButton}"                                    
                                     ToolTip="MaterialDesignIconButton">
-                                <materialDesign:PackIcon Kind="SettingsHelper" />
-                            </Button>
-                            <Button x:Name="btnVerwijderen" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Column="2" Grid.Row="5"
+                                    <materialDesign:PackIcon Kind="SettingsHelper" />
+                                </Button>
+                                <Button x:Name="btnVerwijderen" Tag="{Binding EventID}" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Column="2" Grid.Row="5" Click="btnVerwijderen_Click"
                                     Style="{StaticResource MaterialDesignIconButton}"                                    
                                     ToolTip="MaterialDesignIconButton">
-                                <materialDesign:PackIcon Kind="TrashCanOutline" Margin="0,20,0,0" />
-                            </Button>
-                        </Grid>
+                                    <materialDesign:PackIcon Kind="TrashCanOutline" Margin="0,20,0,0" />
+                                </Button>
+                            </Grid>
                         </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-        </ScrollViewer>    
+        </ScrollViewer>
     </Grid>
 </Window>
