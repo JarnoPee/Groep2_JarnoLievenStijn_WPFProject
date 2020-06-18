@@ -10,28 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace Artmin
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for EventDetail.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class EventDetail : Window
     {
-        public MainWindow()
+        public EventDetail()
         {
             InitializeComponent();
-        }
-
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-
-            LocatieSelectie locatieSelectie = new LocatieSelectie();
-            locatieSelectie.Show();
-            this.Close();
-            
         }
     }
 }
