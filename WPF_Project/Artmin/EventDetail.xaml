@@ -47,7 +47,7 @@
             </TextBlock>
             <TextBlock x:Name="txtBlEventType" Text="Type Evenement" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="12" />
         </StackPanel>
-        <Button x:Name="btnEventsOverzicht" Grid.Row="1" Grid.ColumnSpan="3" Background="Gray" Width="238" HorizontalContentAlignment="Stretch">
+        <Button x:Name="btnEventsOverzicht" Grid.Row="1" Grid.ColumnSpan="3" Background="Gray" Width="238" HorizontalContentAlignment="Stretch" Click="btnEventsOverzicht_Click">
             <TextBlock Text="&lt; Events overzicht" TextAlignment="left"/>
         </Button>
         <Image Source="/pictogrammen/notes.png" Grid.Column="0" Grid.Row="2" Height="60"/>

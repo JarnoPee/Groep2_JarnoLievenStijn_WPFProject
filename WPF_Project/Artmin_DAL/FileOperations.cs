@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
 
 namespace Artmin_DAL
 {
     class FileOperations
     {
-        public static void FoutLoggen(Exception fout)
+        public static void Foutloggen(Exception fout)
         {
             using (StreamWriter writer = new StreamWriter("foutenbestand.txt", true))
             {
