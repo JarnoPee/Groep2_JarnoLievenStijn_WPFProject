@@ -26,9 +26,9 @@ namespace Artmin
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Event eventNaam = DatabaseOperations.OphalenEventViaId(EventGegevens.EventId);
+            Event eventNaam = DatabaseOperations.OphalenEventViaId(Eventgegevens.EventId);
             lblNaamEvenement.Content = $"{eventNaam.Eventnaam}";//Naam van event inladen
-            List<Notitie> notities = DatabaseOperations.OphalenNotitiesViaEventId(EventGegevens.EventId);
+            List<Notitie> notities = DatabaseOperations.OphalenNotitiesViaEventId(Eventgegevens.EventId);
             datagridNotitieEvenement.ItemsSource = notities;
         }
         private void btnAanpassen_Click(object sender, RoutedEventArgs e)

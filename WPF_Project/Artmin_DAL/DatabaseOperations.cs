@@ -46,6 +46,7 @@ namespace Artmin_DAL
                 FileOperations.Foutloggen(ex);
                 return 0;
             }
+        }
         public static List<Event> OphalenEvents()//Lieven
         {
             using (ArtminEntities artminEntities = new ArtminEntities())

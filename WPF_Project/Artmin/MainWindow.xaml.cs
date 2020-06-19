@@ -89,7 +89,7 @@ namespace Artmin
             var eventIDViaTag = ((Button)sender).Tag;
             if (eventIDViaTag != null)
             {
-                EventGegevens.EventId = Convert.ToInt32(eventIDViaTag);
+                Eventgegevens.EventId = Convert.ToInt32(eventIDViaTag);
                 msg = "";
             }
             else
@@ -106,7 +106,7 @@ namespace Artmin
             if (string.IsNullOrWhiteSpace(msg))
             {
                 Event teVerwijderenEvent = new Event();
-                teVerwijderenEvent = DatabaseOperations.OphalenEventViaId(EventGegevens.EventId);
+                teVerwijderenEvent = DatabaseOperations.OphalenEventViaId(Eventgegevens.EventId);
                 if (teVerwijderenEvent != null)
                 {
                     if (teVerwijderenEvent.Artiesten.Count == 0 &&

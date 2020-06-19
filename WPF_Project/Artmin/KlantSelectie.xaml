@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="KlantSelectie" Height="450" Width="800">
     <Grid>
-        <Label Content="Indien u hier geen klant vind dan gaan de zaken slecht" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"></Label>
+        
     </Grid>
 </Window>

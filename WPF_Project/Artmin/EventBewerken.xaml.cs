@@ -40,9 +40,9 @@ namespace Artmin
             {
                 MessageBox.Show("Kon de eventtypes niet binnen laden. Gelieve later opnieuw te proberen.");
             }
-            if (EventGegevens.EventId > 0)
+            if (Eventgegevens.EventId > 0)
             {
-                eventOphalen = DatabaseOperations.OphalenEventViaId(EventGegevens.EventId);
+                eventOphalen = DatabaseOperations.OphalenEventViaId(Eventgegevens.EventId);
 
                 if (eventOphalen != null)
                 {
@@ -77,7 +77,7 @@ namespace Artmin
                 _event.Einduur = einduur.ToString("HH:mm");
                 if (_event.IsGeldig())
                 {
-                    if (EventGegevens.EventId > 0)
+                    if (Eventgegevens.EventId > 0)
                     {
                         _event.EventID = eventOphalen.EventID;
                         if (DatabaseOperations.UpdateEvent(_event) > 0)
@@ -128,7 +128,7 @@ namespace Artmin
         }
         public void ResetEnAfsluiten()
         {
-            EventGegevens.EventId = 0;
+            Eventgegevens.EventId = 0;
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();

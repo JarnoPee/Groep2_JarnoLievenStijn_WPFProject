@@ -34,7 +34,7 @@ namespace Artmin
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Event eventNaam = DatabaseOperations.OphalenEventViaId(EventGegevens.EventId);
+            Event eventNaam = DatabaseOperations.OphalenEventViaId(Eventgegevens.EventId);
             lblNaamEvenement.Content = $"{eventNaam.Eventnaam}";//Naam van event inladen
         }
         private void btnTerugNaarVorigScherm_Click(object sender, RoutedEventArgs e)
@@ -54,7 +54,7 @@ namespace Artmin
                 {
                     notitie.Titel = txtNotitieNaamAanpassen.Text;
                     notitie.Omschrijving = txtNotitieOmschrijvingAanpassen.Text;
-                    notitie.EventID = EventGegevens.EventId;
+                    notitie.EventID = Eventgegevens.EventId;
                     if (notitie.IsGeldig())
                     {
                         int ok = DatabaseOperations.ToevoegenNotitie(notitie);

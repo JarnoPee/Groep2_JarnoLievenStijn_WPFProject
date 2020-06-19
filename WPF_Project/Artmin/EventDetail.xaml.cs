@@ -32,7 +32,7 @@ namespace Artmin
         }
         public void ResetEnAfsluiten()
         {
-            EventGegevens.EventId = 0;
+            Eventgegevens.EventId = 0;
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
@@ -40,8 +40,8 @@ namespace Artmin
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            ophalenToDos = DatabaseOperations.OphalenToDosViaEventId(EventGegevens.EventId);
-            nieuwEvent = DatabaseOperations.OphalenEventViaId(EventGegevens.EventId);
+            ophalenToDos = DatabaseOperations.OphalenToDosViaEventId(Eventgegevens.EventId);
+            nieuwEvent = DatabaseOperations.OphalenEventViaId(Eventgegevens.EventId);
             if (nieuwEvent != null)
             {
                 txtblEventNaam.Text = nieuwEvent.Eventnaam;
