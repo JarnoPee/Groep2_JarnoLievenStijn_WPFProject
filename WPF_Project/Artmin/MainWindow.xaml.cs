@@ -137,6 +137,10 @@ namespace Artmin
         private void Window_Unloaded(object sender, RoutedEventArgs e)
         {
 
+            LocatieSelectie locatieSelectie = new LocatieSelectie();
+            locatieSelectie.Show();
+            this.Close();
+            
         }
     }
 }

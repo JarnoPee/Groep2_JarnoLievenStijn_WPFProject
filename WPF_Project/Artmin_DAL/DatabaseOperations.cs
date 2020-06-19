@@ -12,6 +12,40 @@ namespace Artmin_DAL
 {
     public static class DatabaseOperations
     {
+        public static List<Locatie> OphalenLocaties()
+        {//Stijn Beckers - r0795483
+            using (ArtminEntities artminEntities = new ArtminEntities())
+            {
+                var query = artminEntities.Locatie 
+                    .OrderBy(x => x.Naam);
+                return query.ToList();
+            }
+        }
+        public static Locatie OphalenLocatieViaId(int locatieID)
+        {//Stijn Beckers - r0795483
+            using (ArtminEntities artminEntities = new ArtminEntities())
+            {
+                return artminEntities.Locatie
+                    .Include(x => x.Events)
+                    .Where(x => x.LocatieID == locatieID)
+                    .SingleOrDefault();
+            }
+        }
+        public static int ToevoegenLocatie(Locatie locatie)
+        {//Stijn Beckers - r0795483
+            try
+            {
+                using (ArtminEntities artminEntities = new ArtminEntities())
+                {
+                    artminEntities.Locatie.Add(locatie);
+                    return artminEntities.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                FileOperations.Foutloggen(ex);
+                return 0;
+            }
         public static List<Event> OphalenEvents()//Lieven
         {
             using (ArtminEntities artminEntities = new ArtminEntities())
@@ -56,7 +90,7 @@ namespace Artmin_DAL
             }
         }
 
-        public static int UpdateEvent(Event _event)//Lieven
+        public static int UpdateEvent(Event _event)//Lieven//Stijn
         {
             try
             {
@@ -106,7 +140,6 @@ namespace Artmin_DAL
                 return 0;
             }
         }
-
         public static List<Notitie> OphalenNotitiesViaEventId(int eventId)
         {     //Gemaakt door: Jarno Peeters - R0670336
             using (ArtminEntities artminEntities = new ArtminEntities())

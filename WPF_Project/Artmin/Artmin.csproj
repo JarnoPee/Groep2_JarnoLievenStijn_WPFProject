@@ -101,11 +101,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="KlantSelectie.xaml">
+    <Page Include="LocatieSelectie.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LocatieSelectie.xaml">
+    <Page Include="LocatieToevoegen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -125,6 +125,9 @@
     </Compile>
     <Compile Include="LocatieSelectie.xaml.cs">
       <DependentUpon>LocatieSelectie.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LocatieToevoegen.xaml.cs">
+      <DependentUpon>LocatieToevoegen.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

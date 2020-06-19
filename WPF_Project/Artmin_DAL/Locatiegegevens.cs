@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Artmin_DAL
 {
-    public static class Eventgegevens
+    public static class Locatiegegevens
     {
-        public static int EventId { get; set; }
+        public static int LocatieId { get; set; }
     }
 }
