@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,14 +15,12 @@ namespace Artmin_Models
         public bool IsGeldig()
         {
             return string.IsNullOrWhiteSpace(Error);
-
         }
         public string Error
         {
             get
             {
                 string foutmeldingen = "";
-
                 foreach (var item in this.GetType().GetProperties())
                 {
                     if (item.CanRead)

@@ -23,7 +23,6 @@ namespace Artmin
         public LocatieSelectie()
         {
             InitializeComponent();
-
         }
         //Stijn Beckers - r0795483
         Locatie locatie = new Locatie();
