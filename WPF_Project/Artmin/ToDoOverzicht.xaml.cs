@@ -17,11 +17,18 @@ namespace Artmin
     /// <summary>
     /// Interaction logic for ToDoOverzicht.xaml
     /// </summary>
-    public partial class ToDoOverzicht : Window
+    public partial class ToDoOverzicht : Window // Lieven
     {
         public ToDoOverzicht()
         {
             InitializeComponent();
+        }
+
+        private void btnTerug_Click(object sender, RoutedEventArgs e)
+        {
+            EventDetail eventDetail = new EventDetail();
+            eventDetail.Show();
+            this.Close();
         }
     }
 }

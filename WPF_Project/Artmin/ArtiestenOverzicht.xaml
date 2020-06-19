@@ -7,6 +7,7 @@
         mc:Ignorable="d"
         Title="ArtiestenOverzicht" Height="450" Width="800"> <!--Lieven -->
     <Grid>
+        <Button x:Name="btnTerug" Content="Terug naar EventDetail" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50" Click="btnTerug_Click"></Button>
         <Label Content="Gelieve wat artiesten te recruteren want u kan geen noot houden" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="25"></Label>
     </Grid>
 </Window>

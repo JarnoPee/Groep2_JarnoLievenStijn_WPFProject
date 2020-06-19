@@ -17,11 +17,18 @@ namespace Artmin
     /// <summary>
     /// Interaction logic for KlantSelectie.xaml
     /// </summary>
-    public partial class KlantSelectie : Window
+    public partial class KlantSelectie : Window // Lieven
     {
         public KlantSelectie()
         {
             InitializeComponent();
+        }
+
+        private void btnTerug_Click(object sender, RoutedEventArgs e)
+        {
+            EventDetail eventDetail = new EventDetail();
+            eventDetail.Show();
+            this.Close();
         }
     }
 }

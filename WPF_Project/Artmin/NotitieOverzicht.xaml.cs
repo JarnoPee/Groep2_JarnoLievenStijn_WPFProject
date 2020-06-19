@@ -60,7 +60,7 @@ namespace Artmin
             this.Close();
         }
         private void btnNotitieToevoegen_Click_1(object sender, RoutedEventArgs e)
-        {
+        { 
             NotitieBewerken notitieBewerken = new NotitieBewerken();
             notitieBewerken.Show();
             this.Close();
