@@ -52,6 +52,7 @@ namespace Artmin
 
         private void btnEventToevoegen_Click(object sender, RoutedEventArgs e)
         {
+            Eventgegevens.EventId = 0;
             EventBewerkenOpenen();
         }
 

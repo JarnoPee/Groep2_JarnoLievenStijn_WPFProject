@@ -17,11 +17,18 @@ namespace Artmin
     /// <summary>
     /// Interaction logic for ArtiestenOverzicht.xaml
     /// </summary>
-    public partial class ArtiestenOverzicht : Window
+    public partial class ArtiestenOverzicht : Window // Lieven
     {
         public ArtiestenOverzicht()
         {
             InitializeComponent();
+        }
+
+        private void btnTerug_Click(object sender, RoutedEventArgs e)
+        {
+            EventDetail eventDetail = new EventDetail();
+            eventDetail.Show();
+            this.Close();
         }
     }
 }
