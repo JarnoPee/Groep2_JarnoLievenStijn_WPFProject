@@ -29,8 +29,9 @@ xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="240"  />
         </Grid.ColumnDefinitions>
-        <Label x:Name="lblNotities" Content="Notities" Grid.Row="0"  HorizontalAlignment="Center" Margin="83,5,83,0" VerticalAlignment="Center"   FontSize="20" FontWeight="Bold" Padding="0,0,0,0" Height="25" Width="74"/>
-        <Label x:Name="lblNaamEvenement" Content="Naam evenement"  Grid.Row="1" HorizontalAlignment="Center" Margin="58,0,58,0" VerticalAlignment="Center" FontSize="16" Padding="0,0,0,0" Height="20" Width="124"  />
+        <Label x:Name="lblKleur" Background="Black" Grid.Row="0" Grid.RowSpan="2"/>
+        <Label x:Name="lblNotities" Content="Notities" Grid.Row="0"  HorizontalAlignment="Center" Margin="83,5,83,0" VerticalAlignment="Center"   FontSize="20" FontWeight="Bold" Padding="0,0,0,0" Height="25" Width="74" Background="Black" Foreground="White"/>
+        <Label x:Name="lblNaamEvenement" Content="Naam evenement"  Grid.Row="1" HorizontalAlignment="Center" Margin="58,0,58,0" VerticalAlignment="Center" FontSize="16" Padding="0,0,0,0" Height="20" Width="124" Background="Black" Foreground="White" />
         <Button x:Name="btnTerugNaarVorigScherm" Content="&lt; Terug naar notities" FontSize="12" Grid.Row="2"   HorizontalAlignment="Left"  Margin="0,3,0,0" Height="27" Width="240" Foreground="Black" Background="LightGray" BorderBrush="White" Click="btnTerugNaarVorigScherm_Click" />
         <Label x:Name="lblNotitieTitel" Content="Naam van notitie: " Grid.Row="3" Margin="0,10,0,0" />
         <TextBox x:Name="txtNotitieNaamAanpassen" Grid.Row="4"  Margin="5,0,10,15" materialDesign:HintAssist.Hint="Notitie naam " TextWrapping="Wrap"></TextBox>
